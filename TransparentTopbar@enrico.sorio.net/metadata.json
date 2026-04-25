@@ -2,15 +2,13 @@
   "description": "Transparent Topbar with Multi monitors support",
   "name": "Transparent Topbar",
   "shell-version": [
-    "3.36",
-    "3.38",
-    "40",
-    "41",
-    "42",
-    "43",
-    "44"
+    "45",
+    "46",
+    "47",
+    "48",
+    "49"
   ],
-  "url": "https://github.com/esorio/transparent-topbar",
+  "url": "https://github.com/iamcheyan/transparent-topbar",
   "uuid": "TransparentTopbar@enrico.sorio.net",
-  "version": 3
+  "version": 5
 }

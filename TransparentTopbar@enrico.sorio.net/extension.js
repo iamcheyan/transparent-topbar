@@ -1,26 +1,29 @@
-const Main = imports.ui.main;
+/* exported init */
 
-const _handles = [];
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
-function setStyle() {
-    Main.panel.remove_style_class_name('solid');
-    Main.panel.add_style_class_name('panel-transparency');
+import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 
-    if (Main.mmPanel) {
-        for (var i = 0, len = Main.mmPanel.length; i < len; i++) {
-            Main.mmPanel[i].remove_style_class_name('solid');
-            Main.mmPanel[i].add_style_class_name('panel-transparency');
+export default class TransparentTopbarExtension extends Extension {
+    enable() {
+        this._setStyle();
+        global.window_manager.connectObject('switch-workspace',
+            () => this._setStyle(), this);
+    }
+
+    disable() {
+        global.window_manager.disconnectObject(this);
+    }
+
+    _setStyle() {
+        Main.panel.remove_style_class_name('solid');
+        Main.panel.add_style_class_name('panel-transparency');
+
+        if (Main.mmPanel) {
+            for (let i = 0, len = Main.mmPanel.length; i < len; i++) {
+                Main.mmPanel[i].remove_style_class_name('solid');
+                Main.mmPanel[i].add_style_class_name('panel-transparency');
+            }
         }
     }
-}
-
-function enable() {
-    setStyle();
-    _handles.push(global.window_manager.connect('switch-workspace', () => {
-        setStyle();
-    }));
-}
-
-function disable() {
-    _handles.splice(0).forEach(h => global.window_manager.disconnect(h));
 }

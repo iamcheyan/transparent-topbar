@@ -1,6 +1,10 @@
 {
-  "description": "Transparent Topbar with Multi monitors support",
-  "name": "Transparent Topbar",
+  "description": "Transparent top bar with smart transparency, compact mode, and customizable settings.
+
+Forked from esorio/transparent-topbar, merged with metehan-arslan/gnome-compact-top-bar features.",
+  "name": "Transparent Top Bar",
+  "preferences": "prefs.js",
+  "settings-schema": "org.gnome.shell.extensions.transparent-topbar",
   "shell-version": [
     "45",
     "46",
@@ -10,5 +14,5 @@
   ],
   "url": "https://github.com/iamcheyan/transparent-topbar",
   "uuid": "TransparentTopbar@enrico.sorio.net",
-  "version": 5
+  "version": 6
 }
